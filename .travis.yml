@@ -79,16 +79,6 @@ jobs:
     stage: Test multiple python versions
     python: "3.9"
 
-  - name: "Compile and test. Python 3.10"
-    <<: *job_compile_common
-    stage: Test multiple python versions
-    python: "3.10"
-    
-  - name: "Compile and test. Python 3.11"
-    <<: *job_compile_common
-    stage: Test multiple python versions
-    python: "3.11" 
-
   - name: "Build wheel for Python 3.9, 3.10, 3.11 on Linux x86_64"
     os: linux
     dist: bionic
@@ -105,7 +95,7 @@ jobs:
     before_install:
       - docker pull aihwkit/manylinux2014_x86_64_aihwkit
     install:
-      - python3 -m pip install cibuildwheel==2.8.1
+      - python3 -m pip install cibuildwheel==1.10.0
     script:
       # Build the wheels into './wheelhouse'.
       - python3 -m cibuildwheel --output-dir wheelhouse
@@ -129,7 +119,7 @@ jobs:
     before_install:
       - git clone -b aihwkit https://github.com/aihwkit-bot/delocate.git
     install:
-      - python3 -m pip install cibuildwheel==2.8.1
+      - python3 -m pip install cibuildwheel==1.10.0
     script:
       # Build the wheels into './wheelhouse'.
       - python3 -m cibuildwheel --output-dir wheelhouse --platform macos
