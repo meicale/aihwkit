@@ -27,6 +27,10 @@ build_mkl:
 build_cuda:
 	make build_mkl flags="-DUSE_CUDA=ON ${flags}"
 
+build_inplace_cuda_openblas:
+	make build_inplace flags="-DUSE_CUDA=ON ${flags}"
+	# make build_inplace flags="-DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_STANDARD_REQUIRED=ON -DCMAKE_CXX_EXTENSIONS=OFF -DUSE_CUDA=ON ${flags}"
+
 build_inplace_cuda:
 	make build_inplace_mkl flags="-DUSE_CUDA=ON ${flags}"
 

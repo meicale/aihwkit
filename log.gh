@@ -1,0 +1,15 @@
+1. 使用环境 Windows 11 + wsl2 可能需要更新系统内核，但是目前这个没有验证, Windows 中驱动已经安装好
+2. cuda 11.7 torch1.13 torchvision 1.14 调整对应的requirement，torch单独装
+log:
+0. 代码中默认使用c++11编译，但是，torch2 等使用c++17 编译，需要重新配置编译环境。安装命令python -m pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+0. 安装cuda，在Windows 上装驱动，在Linux 内装cuda，并且需要配置
+0. “..." ‘_ArgTypes’
+/usr/include/c++/11/bits/std_function.h:530:146: error: parameter packs not expanded with ‘...’:  可能是cuda配置没有成功导致的。安装toolkit：https://www.jianshu.com/p/be669d9359e2 命令：sudo apt install nvidia-cuda-toolkit 安装cuda： 参考链接：https://github.com/ashishpatel26/Cuda-installation-on-WSL2-Ubuntu-20.04-and-Windows11 安装命令：wget https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda_11.7.1_515.65.01_linux.run sudo sh cuda_11.7.1_515.65.01_linux.run
+0. ImportError: libopenblas.so.0: cannot open shared object file: No such file or directory 问题解决，需要安装openblas-dev，命令为：sudo apt-get install libopenblas-dev 使用micromamba无法正常安装。
+0. 找不到aihwkit相关module， 需要添加PYTHONPATH 环境变量或者在vscode中进行配置
+
+todo:
+用文章中的方法进行安装，把所有环境安装到conda环境下，这样能够保证环境的隔离，起到更好的效果。参考链接：https://aihwkit.readthedocs.io/en/latest/advanced_install.html
+自定义的nixshell环境，能够更方便地使用这个库
+添加的python 库：matplotlib, pandas, lmfit
+安装linux-headers 参考链接：https://blog.csdn.net/qq_53928256/article/details/129737658
